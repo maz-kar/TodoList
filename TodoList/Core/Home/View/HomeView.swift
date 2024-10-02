@@ -77,12 +77,3 @@ extension HomeView {
 #Preview {
     HomeView()
 }
-
-/*
- TODO: Check these first
- - Add dark mode. Align in the end all the colors in both light and dark mode.
- - Add readme.
- - Add functionality to toolbarItems.
- - Add animation to the button.
- - Add color scheme.
- */
