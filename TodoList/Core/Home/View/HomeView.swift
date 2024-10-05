@@ -9,7 +9,7 @@ import SwiftUI
 
 struct HomeView: View {
     var body: some View {
-        let colorPurple = Color(#colorLiteral(red: 0.2196078449, green: 0.007843137719, blue: 0.8549019694, alpha: 1))
+        let purpleColor = Color(#colorLiteral(red: 0.3236978054, green: 0.1063579395, blue: 0.574860394, alpha: 1))
         
         NavigationStack {
             VStack() {
@@ -25,7 +25,7 @@ struct HomeView: View {
                         .background(
                             RoundedRectangle(cornerRadius: 10)
                                 .frame(width: 250, height: 50)
-                                .foregroundStyle(Color(colorPurple))
+                                .foregroundStyle(purpleColor)
                         )
                 }
                 //TODO: Add an animation
@@ -38,16 +38,16 @@ struct HomeView: View {
                             //TODO: add functionality
                         } label: {
                             Text("Edit")
-                                .foregroundStyle(Color(colorPurple))
+                                .foregroundStyle(purpleColor)
                         }
                     }
                     
                     ToolbarItem(placement: .topBarTrailing) {
-                        Button {
-                            //TODO: add functionality
+                        NavigationLink {
+                            AddItemView()
                         } label: {
                             Text("Add")
-                                .foregroundStyle(Color(colorPurple))
+                                .foregroundStyle(purpleColor)
                         }
                     }
                 })
