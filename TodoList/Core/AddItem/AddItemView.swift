@@ -44,14 +44,10 @@ struct AddItemView: View {
             }
             .navigationTitle("Add an Item 🖊️")
         }
+        .accentColor(purpleColor)
     }
 }
 
 #Preview {
     AddItemView()
 }
-
-/*
- TODO:
- rename the back button to be really back
- */
