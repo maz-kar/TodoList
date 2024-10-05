@@ -20,7 +20,8 @@ struct AddItemView: View {
                     .padding()
                     .background(
                         RoundedRectangle(cornerRadius: 10)
-                            .frame(width: .infinity, height: 50)
+                            .frame(maxWidth: .infinity)
+                            .frame(height: 50)
                             .foregroundStyle(textFieldFrameColor)
                     )
                     .padding()
@@ -29,7 +30,8 @@ struct AddItemView: View {
                     //TODO: Add functionality
                 } label: {
                     RoundedRectangle(cornerRadius: 10)
-                        .frame(width: .infinity, height: 50)
+                        .frame(maxWidth: .infinity)
+                        .frame(height: 50)
                         .foregroundStyle(purpleColor)
                         .padding()
                         .overlay {
