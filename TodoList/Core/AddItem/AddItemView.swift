@@ -59,9 +59,11 @@ struct AddItemView: View {
  */
 
 class addItemViewModel: ObservableObject {
+    @Published var savedEntities: [TodoItemEntity] = []
+    let container: NSPersistentContainer
     
     init() {
-        let container = NSPersistentContainer(name: "TodoItemsContainer")
+        container = NSPersistentContainer(name: "TodoItemsContainer")
         container.loadPersistentStores { decription, error in
             if let error = error {
                 print("Error while loading: \(error)")
@@ -72,6 +74,12 @@ class addItemViewModel: ObservableObject {
     }
     
     func fetchRequest() {
-        
+        let request = NSFetchRequest<TodoItemEntity>(entityName: "TodoItemEntity")
+        do {
+            savedEntities = try container.viewContext.fetch(request)
+        } catch let error {
+            print("Error while fetching: \(error)")
+        }
     }
+    
 }
