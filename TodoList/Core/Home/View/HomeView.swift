@@ -15,9 +15,7 @@ struct HomeView: View {
             VStack() {
                 middleText
                 
-                Button {
-                    //TODO: Add functionality
-                } label: {
+                NavigationLink(destination: AddItemView()) {
                     Text("Add Something 🥳")
                         .font(.title2)
                         .fontWeight(.semibold)
@@ -51,6 +49,7 @@ struct HomeView: View {
                         }
                     }
                 })
+                .navigationBarBackButtonHidden()
                 .navigationTitle("Todo List" + " 📝")
         }
     }

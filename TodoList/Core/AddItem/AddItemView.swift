@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct AddItemView: View {
     @State private var textFieldTxt: String = ""
@@ -26,9 +27,7 @@ struct AddItemView: View {
                     )
                     .padding()
                 
-                Button {
-                    //TODO: Add functionality
-                } label: {
+                NavigationLink(destination: HomeView()) {
                     RoundedRectangle(cornerRadius: 10)
                         .frame(maxWidth: .infinity)
                         .frame(height: 50)
@@ -40,6 +39,7 @@ struct AddItemView: View {
                                 .fontWeight(.semibold)
                         }
                 }
+                
                 Spacer()
             }
             .navigationTitle("Add an Item 🖊️")
@@ -51,3 +51,9 @@ struct AddItemView: View {
 #Preview {
     AddItemView()
 }
+
+/*
+ Solution 1:
+ I press SAVE, savedEntities will be updated. And we will be navigated to HomeView
+ */
+
