@@ -9,7 +9,9 @@ import SwiftUI
 import CoreData
 
 struct AddItemView: View {
+    @StateObject var vm = addItemViewModel()
     @State private var textFieldTxt: String = ""
+    
     let textFieldFrameColor = Color(#colorLiteral(red: 0.921431005, green: 0.9214526415, blue: 0.9214410186, alpha: 1))
     let purpleColor = Color(#colorLiteral(red: 0.3236978054, green: 0.1063579395, blue: 0.574860394, alpha: 1))
     
@@ -37,6 +39,9 @@ struct AddItemView: View {
                             Text("Save".uppercased())
                                 .foregroundStyle(.white)
                                 .fontWeight(.semibold)
+                        }
+                        .onTapGesture {
+                            vm.addItems(text: textFieldTxt)
                         }
                 }
                 
@@ -69,7 +74,6 @@ class addItemViewModel: ObservableObject {
                 print("Error while loading: \(error)")
             }
         }
-        
         fetchRequest()
     }
     
@@ -81,5 +85,23 @@ class addItemViewModel: ObservableObject {
             print("Error while fetching: \(error)")
         }
     }
+    
+    func addItems(text: String) {
+        let newItem = TodoItemEntity(context: container.viewContext)
+        newItem.name = text
+        
+        saveItems()
+    }
+    
+    func saveItems() {
+        do {
+            try container.viewContext.save()
+        } catch let error {
+            print("Error while saving: \(error)")
+        }
+        fetchRequest()
+    }
+    
+    
     
 }
