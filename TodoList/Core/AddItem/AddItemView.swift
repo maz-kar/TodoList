@@ -54,6 +54,24 @@ struct AddItemView: View {
 
 /*
  Solution 1:
- I press SAVE, savedEntities will be updated. And we will be navigated to HomeView
+ - I press SAVE, savedEntities will be updated.
+ - Do all the logic here as the ViewModel. Update the savedEntities. make it Published and use it in HomeView by the reference of ViewModel
  */
 
+class addItemViewModel: ObservableObject {
+    
+    init() {
+        let container = NSPersistentContainer(name: "TodoItemsContainer")
+        container.loadPersistentStores { decription, error in
+            if let error = error {
+                print("Error while loading: \(error)")
+            }
+        }
+        
+        fetchRequest()
+    }
+    
+    func fetchRequest() {
+        
+    }
+}
