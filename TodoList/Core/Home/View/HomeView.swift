@@ -8,28 +8,25 @@
 import SwiftUI
 
 struct HomeView: View {
+    //TODO: I want to have a ref of vm here. call vm.savedEntities. if empty, show the current view. if not show the savedEntities. Consider to use environment instead of two times using vm in 2 different views.
+    @StateObject var vm = addItemViewModel()
+    let purpleColor = Color(#colorLiteral(red: 0.3236978054, green: 0.1063579395, blue: 0.574860394, alpha: 1))
+    
     var body: some View {
-        let purpleColor = Color(#colorLiteral(red: 0.3236978054, green: 0.1063579395, blue: 0.574860394, alpha: 1))
-        
         NavigationStack {
             VStack() {
-                middleText
-                
-                NavigationLink(destination: AddItemView()) {
-                    Text("Add Something 🥳")
-                        .font(.title2)
-                        .fontWeight(.semibold)
-                        .foregroundStyle(Color.white)
-                        .background(
-                            RoundedRectangle(cornerRadius: 10)
-                                .frame(width: 250, height: 50)
-                                .foregroundStyle(purpleColor)
-                        )
+                if !vm.savedEntities.isEmpty {
+                    middleText
+                    addSthButton
                 }
-                //TODO: Add an animation
+                else {
+                    //TODO: Show the savedEntities list
+                }
             }
             .padding()
+            
             Spacer()
+            
                 .toolbar(content: {
                     ToolbarItem(placement: .topBarLeading) {
                         Button {
@@ -69,6 +66,23 @@ extension HomeView {
         }
         .padding()
     }
+    
+    private var addSthButton: some View {
+        NavigationLink(destination: AddItemView()) {
+            Text("Add Something 🥳")
+                .font(.title2)
+                .fontWeight(.semibold)
+                .foregroundStyle(Color.white)
+                .background(
+                    RoundedRectangle(cornerRadius: 10)
+                        .frame(width: 250, height: 50)
+                        .foregroundStyle(purpleColor)
+                )
+        }
+        //TODO: Add an animation
+    }
+    
+    
 }
 
 

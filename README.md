@@ -46,4 +46,5 @@ Continue with HomeView:
 
 ### Bugs: 
  - Back button color of the AddItemView
+ - Pressing on Save and segueing to the HomeView is not happening all the time!
 
