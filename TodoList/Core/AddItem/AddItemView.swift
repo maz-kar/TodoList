@@ -41,9 +41,28 @@ struct AddItemView: View {
                                 .fontWeight(.semibold)
                         }
                         .onTapGesture {
-                            vm.addItems(text: textFieldTxt)
+                            if textFieldTxt.isEmpty {
+                                return
+                            } else {
+                                vm.addItems(text: textFieldTxt)
+                                textFieldTxt = ""
+                            }
                         }
                 }
+                
+                List {
+                    VStack(alignment: .leading) {
+                        ForEach(vm.savedEntities) { entity in
+                            Text(entity.name ?? "No entity name")
+                            Divider()
+                        }
+                        .onDelete { index in
+                            vm.deleteItems(index: index)
+                        }
+                    }
+                }
+                .padding()
+                .listStyle(.plain)
                 
                 Spacer()
             }
@@ -56,12 +75,6 @@ struct AddItemView: View {
 #Preview {
     AddItemView()
 }
-
-/*
- Solution 1:
- - I press SAVE, savedEntities will be updated.
- - Do all the logic here as the ViewModel. Update the savedEntities. make it Published and use it in HomeView by the reference of ViewModel
- */
 
 class addItemViewModel: ObservableObject {
     @Published var savedEntities: [TodoItemEntity] = []
@@ -100,6 +113,10 @@ class addItemViewModel: ObservableObject {
             print("Error while saving: \(error)")
         }
         fetchRequest()
+    }
+    
+    func deleteItems(index: IndexSet) {
+        //
     }
     
     

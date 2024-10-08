@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct HomeView: View {
-    //TODO: I want to have a ref of vm here. call vm.savedEntities. if empty, show the current view. if not show the savedEntities. Consider to use environment instead of two times using vm in 2 different views.
     @StateObject var vm = addItemViewModel()
     let purpleColor = Color(#colorLiteral(red: 0.3236978054, green: 0.1063579395, blue: 0.574860394, alpha: 1))
     
@@ -20,7 +19,7 @@ struct HomeView: View {
                     addSthButton
                 }
                 else {
-                    //TODO: Show the savedEntities list
+                    //
                 }
             }
             .padding()
@@ -30,7 +29,7 @@ struct HomeView: View {
                 .toolbar(content: {
                     ToolbarItem(placement: .topBarLeading) {
                         Button {
-                            //TODO: add functionality
+                            //
                         } label: {
                             Text("Edit")
                                 .foregroundStyle(purpleColor)
@@ -79,10 +78,7 @@ extension HomeView {
                         .foregroundStyle(purpleColor)
                 )
         }
-        //TODO: Add an animation
     }
-    
-    
 }
 
 
