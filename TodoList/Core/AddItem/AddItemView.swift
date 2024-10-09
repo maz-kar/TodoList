@@ -18,52 +18,9 @@ struct AddItemView: View {
     var body: some View {
         NavigationStack {
             VStack(spacing: -25) {
-                
-                TextField("Type something here...", text: $textFieldTxt)
-                    .padding()
-                    .background(
-                        RoundedRectangle(cornerRadius: 10)
-                            .frame(maxWidth: .infinity)
-                            .frame(height: 50)
-                            .foregroundStyle(textFieldFrameColor)
-                    )
-                    .padding()
-                
-                NavigationLink(destination: HomeView()) {
-                    RoundedRectangle(cornerRadius: 10)
-                        .frame(maxWidth: .infinity)
-                        .frame(height: 50)
-                        .foregroundStyle(purpleColor)
-                        .padding()
-                        .overlay {
-                            Text("Save".uppercased())
-                                .foregroundStyle(.white)
-                                .fontWeight(.semibold)
-                        }
-                        .onTapGesture {
-                            if textFieldTxt.isEmpty {
-                                return
-                            } else {
-                                vm.addItems(text: textFieldTxt)
-                                textFieldTxt = ""
-                            }
-                        }
-                }
-                
-                List {
-                    VStack(alignment: .leading) {
-                        ForEach(vm.savedEntities) { entity in
-                            Text(entity.name ?? "No entity name")
-                            Divider()
-                        }
-                        .onDelete { index in
-                            vm.deleteItems(index: index)
-                        }
-                    }
-                }
-                .padding()
-                .listStyle(.plain)
-                
+                searchField
+                saveButton
+                itemsList
                 Spacer()
             }
             .navigationTitle("Add an Item 🖊️")
@@ -116,9 +73,60 @@ class addItemViewModel: ObservableObject {
     }
     
     func deleteItems(index: IndexSet) {
-        //
+        
     }
     
+}
+
+extension AddItemView {
+    private var searchField: some View {
+        TextField("Type something here...", text: $textFieldTxt)
+            .padding()
+            .background(
+                RoundedRectangle(cornerRadius: 10)
+                    .frame(maxWidth: .infinity)
+                    .frame(height: 50)
+                    .foregroundStyle(textFieldFrameColor)
+            )
+            .padding()
+    }
     
+    private var saveButton: some View {
+        NavigationLink(destination: HomeView()) {
+            RoundedRectangle(cornerRadius: 10)
+                .frame(maxWidth: .infinity)
+                .frame(height: 50)
+                .foregroundStyle(purpleColor)
+                .padding()
+                .overlay {
+                    Text("Save".uppercased())
+                        .foregroundStyle(.white)
+                        .fontWeight(.semibold)
+                }
+                .onTapGesture {
+                    if textFieldTxt.isEmpty {
+                        return
+                    } else {
+                        vm.addItems(text: textFieldTxt)
+                        textFieldTxt = ""
+                    }
+                }
+        }
+    }
     
+    private var itemsList: some View {
+        List {
+            VStack(alignment: .leading) {
+                ForEach(vm.savedEntities) { entity in
+                    Text(entity.name ?? "No entity name")
+                    Divider()
+                }
+                .onDelete { index in
+                    vm.deleteItems(index: index)
+                }
+            }
+        }
+        .padding()
+        .listStyle(.plain)
+    }
 }
