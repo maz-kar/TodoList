@@ -10,7 +10,7 @@ import CoreData
 
 struct AddItemView: View {
     @StateObject var vm = addItemViewModel()
-    @State private var textFieldTxt: String = ""
+    @State private var textFieldText: String = ""
     
     let textFieldFrameColor = Color(#colorLiteral(red: 0.921431005, green: 0.9214526415, blue: 0.9214410186, alpha: 1))
     let purpleColor = Color(#colorLiteral(red: 0.3236978054, green: 0.1063579395, blue: 0.574860394, alpha: 1))
@@ -80,7 +80,7 @@ class addItemViewModel: ObservableObject {
 
 extension AddItemView {
     private var searchField: some View {
-        TextField("Type something here...", text: $textFieldTxt)
+        TextField("Type something here...", text: $textFieldText)
             .padding()
             .background(
                 RoundedRectangle(cornerRadius: 10)
@@ -104,11 +104,11 @@ extension AddItemView {
                         .fontWeight(.semibold)
                 }
                 .onTapGesture {
-                    if textFieldTxt.isEmpty {
+                    if textFieldText.isEmpty {
                         return
                     } else {
-                        vm.addItems(text: textFieldTxt)
-                        textFieldTxt = ""
+                        vm.addItems(text: textFieldText)
+                        textFieldText = ""
                     }
                 }
         }
@@ -119,7 +119,6 @@ extension AddItemView {
             VStack(alignment: .leading) {
                 ForEach(vm.savedEntities) { entity in
                     Text(entity.name ?? "No entity name")
-                    Divider()
                 }
                 .onDelete { index in
                     vm.deleteItems(index: index)
