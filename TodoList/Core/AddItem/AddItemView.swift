@@ -72,8 +72,12 @@ class addItemViewModel: ObservableObject {
         fetchRequest()
     }
     
-    func deleteItems(index: IndexSet) {
+    func deleteItems(indexSet: IndexSet) {
+        guard let index = indexSet.first else { return }
+        let itemToDelete = savedEntities[index]
+        container.viewContext.delete(itemToDelete)
         
+        saveItems()
     }
     
 }
@@ -116,14 +120,12 @@ extension AddItemView {
     
     private var itemsList: some View {
         List {
-            VStack(alignment: .leading) {
-                ForEach(vm.savedEntities) { entity in
+            ForEach(vm.savedEntities) { entity in
+                VStack(alignment: .leading) {
                     Text(entity.name ?? "No entity name")
                 }
-                .onDelete { index in
-                    vm.deleteItems(index: index)
-                }
             }
+            .onDelete(perform: vm.deleteItems)
         }
         .padding()
         .listStyle(.plain)
