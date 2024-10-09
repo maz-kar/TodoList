@@ -27,7 +27,6 @@ We have:
 
 ## TODO:
  Hot Fixes:
- - implement Delete and UpdateItems
  - Press SAVE does not navigate to HomeView.
  - Show savedEntities on HomeView.
  - If the issue with showing the saveEntities on HomeView not solved, consider to use reference of the vm only in one View or use Environment in one place.
@@ -37,14 +36,8 @@ We have:
  
 Final Fixes:
  - Add dark mode. Align in the end all the colors in both light and dark mode.
- - Add functionality to toolbarItems.
- - Add animation to the button.
- - Add color scheme.
  - Add color scheme.
  - Add launch screen.
  - Save entities first with user defaults, CoreData and ultimately with SwiftData.
- - Add delete and edit options to the entities.
- - Separate views by extending the HomeView and creating private var out of each modular parts.
  - Back button color of the AddItemView
- - 2 Dividers in the shown list
 
