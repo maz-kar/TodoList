@@ -9,6 +9,7 @@ import SwiftUI
 
 struct HomeView: View {
     @StateObject var vm = addItemViewModel()
+    @State private var isTapped: Bool = false
     
     let purpleColor = Color(#colorLiteral(red: 0.3236978054, green: 0.1063579395, blue: 0.574860394, alpha: 1))
     
@@ -85,13 +86,19 @@ extension HomeView {
         List {
             ForEach(vm.savedEntities) { entity in
                 VStack {
-                    Text(entity.name ?? "no name")
+                    HStack {
+                        Image(systemName: isTapped ? "checkmark.circle" : "circle")
+                            .foregroundStyle(isTapped ? Color.green : Color.red)
+                        Text(entity.name ?? "no name")
+                    }
+                    .onTapGesture {
+                        isTapped.toggle()
+                    }
                 }
             }
             .onDelete(perform: vm.deleteItems)
         }
         .listStyle(.plain)
-        .padding()
     }
 }
 
