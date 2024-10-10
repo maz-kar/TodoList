@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct HomeView: View {
-    @StateObject var vm = addItemViewModel()
+    @EnvironmentObject private var vm: AddItemViewModel
     @State private var isTapped: Bool = false
+    @State private var isNavigating: Bool = false
     
     let purpleColor = Color(#colorLiteral(red: 0.3236978054, green: 0.1063579395, blue: 0.574860394, alpha: 1))
     
@@ -24,6 +25,10 @@ struct HomeView: View {
                     itemsList
                 }
             }
+            .navigationDestination(isPresented: $isNavigating, destination: {
+                AddItemView()
+            })
+            
             .padding()
             
             Spacer()
@@ -69,7 +74,9 @@ extension HomeView {
     }
     
     private var addSthButton: some View {
-        NavigationLink(destination: AddItemView()) {
+        Button {
+            isNavigating = true
+        } label: {
             Text("Add Something 🥳")
                 .font(.title2)
                 .fontWeight(.semibold)
@@ -104,4 +111,5 @@ extension HomeView {
 
 #Preview {
     HomeView()
+        .environmentObject(AddItemViewModel())
 }
