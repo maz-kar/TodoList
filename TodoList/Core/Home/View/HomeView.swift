@@ -102,8 +102,6 @@ extension HomeView {
     }
 }
 
-
-
 #Preview {
     HomeView()
 }

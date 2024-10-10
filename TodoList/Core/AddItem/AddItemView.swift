@@ -101,7 +101,7 @@ extension AddItemView {
     
     private var saveButton: some View {
         Button {
-            if textFieldText.isEmpty { return }
+            if textFieldText.count < 3 { return }
             else {
                 vm.addItems(text: textFieldText)
                 textFieldText = ""
