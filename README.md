@@ -32,6 +32,8 @@ We have:
  - After showing the savedEntities in HomeView, add dynamic red and green circles to the entities on their left
  - After deleting all entities, the middleText will not be shown unless reopening the app.
  - Add the alert: "Your new todo item must be at least 3 characters long!!! 3 emojies."
+ - Add an animation when tapped between red and green
+ - Everything is too much to left 
  
 Final Fixes:
  - Add dark mode. Align in the end all the colors in both light and dark mode.
