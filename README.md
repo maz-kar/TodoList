@@ -29,10 +29,6 @@ We have:
  Hot Fixes:
  - Add Animation to the Add Something button.
  - Add functionality to Edit button: it must go to a mode which has an extra delete button in left and sorting button in right.
- - Add an animation when tapped between red and green
- - Everything is too much to left 
- - find the best place in bundle for the core data file
- - for more than 1 item, when pressing on circle, all will be checked.
  
 Final Fixes:
  - Add dark mode. Align in the end all the colors in both light and dark mode.
