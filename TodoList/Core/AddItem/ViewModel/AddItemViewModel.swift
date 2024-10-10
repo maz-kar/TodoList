@@ -55,4 +55,8 @@ class AddItemViewModel: ObservableObject {
         saveItems()
     }
     
+    func toggleIsTapped(for entity: TodoItemEntity) {
+        objectWillChange.send()
+        entity.isTapped.toggle()
+    }
 }
