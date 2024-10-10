@@ -9,17 +9,18 @@ import SwiftUI
 
 struct HomeView: View {
     @StateObject var vm = addItemViewModel()
+    
     let purpleColor = Color(#colorLiteral(red: 0.3236978054, green: 0.1063579395, blue: 0.574860394, alpha: 1))
     
     var body: some View {
         NavigationStack {
             VStack() {
-                if !vm.savedEntities.isEmpty {
+                if vm.savedEntities.isEmpty {
                     middleText
                     addSthButton
                 }
                 else {
-                    //
+                    itemsList
                 }
             }
             .padding()
@@ -78,6 +79,19 @@ extension HomeView {
                         .foregroundStyle(purpleColor)
                 )
         }
+    }
+    
+    private var itemsList: some View {
+        List {
+            ForEach(vm.savedEntities) { entity in
+                VStack {
+                    Text(entity.name ?? "no name")
+                }
+            }
+            .onDelete(perform: vm.deleteItems)
+        }
+        .listStyle(.plain)
+        .padding()
     }
 }
 
