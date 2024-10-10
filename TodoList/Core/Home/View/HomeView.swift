@@ -94,6 +94,7 @@ extension HomeView {
                 VStack {
                     HStack {
                         Image(systemName: entity.isTapped ? "checkmark.circle" : "circle")
+                            .animation(.easeInOut)
                             .foregroundStyle(entity.isTapped ? Color.green : Color.red)
                         Text(entity.name ?? "no name")
                     }
