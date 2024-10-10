@@ -97,6 +97,7 @@ extension HomeView {
                             .foregroundStyle(entity.isTapped ? Color.green : Color.red)
                         Text(entity.name ?? "no name")
                     }
+                    .offset(x: -15)
                     .onTapGesture {
                         vm.toggleIsTapped(for: entity)
                     }
