@@ -9,10 +9,10 @@ import SwiftUI
 import CoreData
 
 struct AddItemView: View {
-    @StateObject var vm = addItemViewModel()
+    //@StateObject var vm = addItemViewModel()
     @State private var textFieldText: String = ""
     @State private var isNavigating: Bool = false
-    @State private var showAlert: Bool = false
+    //@State private var showAlert: Bool = false
     
     let textFieldFrameColor = Color(#colorLiteral(red: 0.921431005, green: 0.9214526415, blue: 0.9214410186, alpha: 1))
     let purpleColor = Color(#colorLiteral(red: 0.3236978054, green: 0.1063579395, blue: 0.574860394, alpha: 1))
@@ -22,6 +22,7 @@ struct AddItemView: View {
             VStack(spacing: -25) {
                 searchField
                 saveButton
+                //itemsList
 
                 Spacer()
             }
@@ -103,9 +104,7 @@ extension AddItemView {
     
     private var saveButton: some View {
         Button {
-            if textFieldText.count < 3 {
-                showAlert = true
-            }
+            if textFieldText.isEmpty { return }
             else {
                 vm.addItems(text: textFieldText)
                 textFieldText = ""
@@ -123,21 +122,18 @@ extension AddItemView {
                         .fontWeight(.semibold)
                 }
         }
-        .alert(isPresented: $showAlert) {
-            Alert(title: Text("Your new todo item must be at least three characters long! 😨😰😱"), message: nil)
-        }
     }
     
-    private var itemsList: some View {
-        List {
-            ForEach(vm.savedEntities) { entity in
-                VStack(alignment: .leading) {
-                    Text(entity.name ?? "No entity name")
-                }
-            }
-            .onDelete(perform: vm.deleteItems)
-        }
-        .padding()
-        .listStyle(.plain)
-    }
+//    private var itemsList: some View {
+//        List {
+//            ForEach(vm.savedEntities) { entity in
+//                VStack(alignment: .leading) {
+//                    Text(entity.name ?? "No entity name")
+//                }
+//            }
+//            .onDelete(perform: vm.deleteItems)
+//        }
+//        .padding()
+//        .listStyle(.plain)
+//    }
 }
