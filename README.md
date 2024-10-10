@@ -27,12 +27,11 @@ We have:
 
 ## TODO:
  Hot Fixes:
- - Press SAVE does not navigate to HomeView.
- - Show savedEntities on HomeView.
- - If the issue with showing the saveEntities on HomeView not solved, consider to use reference of the vm only in one View or use Environment in one place.
  - Add Animation to the Add Something button.
- - Add functionality to Edit button.
+ - Add functionality to Edit button: it must go to a mode which has an extra delete button in left and sorting button in right.
  - After showing the savedEntities in HomeView, add dynamic red and green circles to the entities on their left
+ - After deleting all entities, the middleText will not be shown unless reopening the app.
+ - Add the alert: "Your new todo item must be at least 3 characters long!!! 3 emojies."
  
 Final Fixes:
  - Add dark mode. Align in the end all the colors in both light and dark mode.
