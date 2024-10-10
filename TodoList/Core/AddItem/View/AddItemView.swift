@@ -9,10 +9,10 @@ import SwiftUI
 import CoreData
 
 struct AddItemView: View {
-    //@StateObject var vm = addItemViewModel()
+    @EnvironmentObject private var vm: AddItemViewModel
     @State private var textFieldText: String = ""
     @State private var isNavigating: Bool = false
-    //@State private var showAlert: Bool = false
+    @State private var showAlert: Bool = false
     
     let textFieldFrameColor = Color(#colorLiteral(red: 0.921431005, green: 0.9214526415, blue: 0.9214410186, alpha: 1))
     let purpleColor = Color(#colorLiteral(red: 0.3236978054, green: 0.1063579395, blue: 0.574860394, alpha: 1))
@@ -22,7 +22,6 @@ struct AddItemView: View {
             VStack(spacing: -25) {
                 searchField
                 saveButton
-                //itemsList
 
                 Spacer()
             }
@@ -37,56 +36,10 @@ struct AddItemView: View {
 
 #Preview {
     AddItemView()
+        .environmentObject(AddItemViewModel())
 }
 
-class addItemViewModel: ObservableObject {
-    @Published var savedEntities: [TodoItemEntity] = []
-    let container: NSPersistentContainer
-    
-    init() {
-        container = NSPersistentContainer(name: "TodoItemsContainer")
-        container.loadPersistentStores { decription, error in
-            if let error = error {
-                print("Error while loading: \(error)")
-            }
-        }
-        fetchRequest()
-    }
-    
-    func fetchRequest() {
-        let request = NSFetchRequest<TodoItemEntity>(entityName: "TodoItemEntity")
-        do {
-            savedEntities = try container.viewContext.fetch(request)
-        } catch let error {
-            print("Error while fetching: \(error)")
-        }
-    }
-    
-    func addItems(text: String) {
-        let newItem = TodoItemEntity(context: container.viewContext)
-        newItem.name = text
-        
-        saveItems()
-    }
-    
-    func saveItems() {
-        do {
-            try container.viewContext.save()
-        } catch let error {
-            print("Error while saving: \(error)")
-        }
-        fetchRequest()
-    }
-    
-    func deleteItems(indexSet: IndexSet) {
-        guard let index = indexSet.first else { return }
-        let itemToDelete = savedEntities[index]
-        container.viewContext.delete(itemToDelete)
-        
-        saveItems()
-    }
-    
-}
+
 
 extension AddItemView {
     private var searchField: some View {
@@ -104,7 +57,9 @@ extension AddItemView {
     
     private var saveButton: some View {
         Button {
-            if textFieldText.isEmpty { return }
+            if textFieldText.count < 3 {
+                showAlert = true
+            }
             else {
                 vm.addItems(text: textFieldText)
                 textFieldText = ""
@@ -122,18 +77,9 @@ extension AddItemView {
                         .fontWeight(.semibold)
                 }
         }
+        .alert(isPresented: $showAlert) {
+            Alert(title: Text("Your new todo item must be at least 3 characters long!!! 😨😰😱"), message: nil)
+        }
     }
     
-//    private var itemsList: some View {
-//        List {
-//            ForEach(vm.savedEntities) { entity in
-//                VStack(alignment: .leading) {
-//                    Text(entity.name ?? "No entity name")
-//                }
-//            }
-//            .onDelete(perform: vm.deleteItems)
-//        }
-//        .padding()
-//        .listStyle(.plain)
-//    }
 }
