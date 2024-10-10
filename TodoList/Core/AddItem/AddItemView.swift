@@ -88,6 +88,7 @@ class addItemViewModel: ObservableObject {
 extension AddItemView {
     private var searchField: some View {
         TextField("Type something here...", text: $textFieldText)
+            .autocorrectionDisabled(true)
             .padding()
             .background(
                 RoundedRectangle(cornerRadius: 10)
