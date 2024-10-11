@@ -36,12 +36,8 @@ struct HomeView: View {
             
                 .toolbar(content: {
                     ToolbarItem(placement: .topBarLeading) {
-                        Button {
-                            //
-                        } label: {
-                            Text("Edit")
-                                .foregroundStyle(purpleColor)
-                        }
+                        EditButton()
+                            .foregroundStyle(purpleColor)
                     }
                     
                     ToolbarItem(placement: .topBarTrailing) {
@@ -116,6 +112,11 @@ extension HomeView {
                 }
             }
             .onDelete(perform: vm.deleteItems)
+            
+            .onMove { indices, newOffset in
+                vm.savedEntities.move(fromOffsets: indices, toOffset: newOffset)
+            }
+            
         }
         .listStyle(.plain)
     }
