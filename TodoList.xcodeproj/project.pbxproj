@@ -7,10 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6B936F382CB9835300E848C2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B936F372CB9835300E848C2 /* LaunchScreen.storyboard */; };
 		6B95E9212CAD895600C8A594 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 6B95E9202CAD895600C8A594 /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6B936F372CB9835300E848C2 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6B95E9072CAD7B2800C8A594 /* TodoList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TodoList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B95E9202CAD895600C8A594 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -37,6 +39,7 @@
 		6B95E8FE2CAD7B2800C8A594 = {
 			isa = PBXGroup;
 			children = (
+				6B936F372CB9835300E848C2 /* LaunchScreen.storyboard */,
 				6B95E9202CAD895600C8A594 /* README.md */,
 				6B95E9092CAD7B2800C8A594 /* TodoList */,
 				6B95E9082CAD7B2800C8A594 /* Products */,
@@ -115,6 +118,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6B936F382CB9835300E848C2 /* LaunchScreen.storyboard in Resources */,
 				6B95E9212CAD895600C8A594 /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

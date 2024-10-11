@@ -26,5 +26,6 @@ We have:
  10. lastly we need to implement our functionalities like: add, delete, save, update.
 
 ## TODO:
- - Add launch screen.
+ - Add launch screen. Still not working. Make a delay for the Launch Screen then it might be seen.
+ - make the circles bigger (same size of the delete Edit).
 
