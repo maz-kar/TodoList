@@ -10,7 +10,6 @@ import SwiftUI
 
 extension Color {
     static let theme = Theme()
-    static let launch = Launch()
 }
 
 struct Theme {
@@ -18,10 +17,5 @@ struct Theme {
     let accent = Color("AccentColor")
     let secondaryPurple = Color("SecondaryPurple")
     let textField = Color("TextField")
-
-}
-
-struct Launch {
-    let launchBackground = Color("LaunchBackground")
 }
 
