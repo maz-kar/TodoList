@@ -23,7 +23,6 @@ struct Theme {
 }
 
 struct Launch {
-    let launchAccent = Color("LaunchAccent")
     let launchBackground = Color("LaunchBackground")
 }
 
