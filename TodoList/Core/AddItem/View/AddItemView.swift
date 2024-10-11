@@ -39,7 +39,6 @@ struct AddItemView: View {
 extension AddItemView {
     private var searchField: some View {
         TextField("Type something here...", text: $textFieldText)
-            .foregroundStyle(Color.theme.secondaryText)
             .autocorrectionDisabled(true)
             .padding()
             .background(

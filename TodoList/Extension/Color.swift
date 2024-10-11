@@ -17,7 +17,6 @@ struct Theme {
     let background = Color("Background")
     let accent = Color("AccentColor")
     let secondaryPurple = Color("SecondaryPurple")
-    let secondaryText = Color("SecondaryText")
     let textField = Color("TextField")
 
 }
