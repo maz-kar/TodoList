@@ -26,12 +26,5 @@ We have:
  10. lastly we need to implement our functionalities like: add, delete, save, update.
 
 ## TODO:
- Hot Fixes:
- - Add functionality to Edit button: it must go to a mode which has an extra delete button in left and sorting button in right. Keywords: move, swipe, delete etc.
- 
-Final Fixes:
- - Add dark mode. Align in the end all the colors in both light and dark mode.
- - Add color scheme.
  - Add launch screen.
- - Back button color of the AddItemView
 
