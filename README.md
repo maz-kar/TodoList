@@ -27,8 +27,7 @@ We have:
 
 ## TODO:
  Hot Fixes:
- - Add Animation to the Add Something button.
- - Add functionality to Edit button: it must go to a mode which has an extra delete button in left and sorting button in right.
+ - Add functionality to Edit button: it must go to a mode which has an extra delete button in left and sorting button in right. Keywords: move, swipe, delete etc.
  
 Final Fixes:
  - Add dark mode. Align in the end all the colors in both light and dark mode.
