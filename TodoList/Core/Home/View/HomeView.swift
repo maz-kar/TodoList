@@ -10,8 +10,10 @@ import SwiftUI
 struct HomeView: View {
     @EnvironmentObject private var vm: AddItemViewModel
     @State private var isNavigating: Bool = false
+    @State private var isScaled: Bool = false
     
     let purpleColor = Color(#colorLiteral(red: 0.3236978054, green: 0.1063579395, blue: 0.574860394, alpha: 1))
+    let secondaryPurpleColor = Color(#colorLiteral(red: 0.5725490451, green: 0, blue: 0.2313725501, alpha: 1))
     
     var body: some View {
         NavigationStack {
@@ -83,8 +85,17 @@ extension HomeView {
                 .background(
                     RoundedRectangle(cornerRadius: 10)
                         .frame(width: 250, height: 50)
-                        .foregroundStyle(purpleColor)
+                        .shadow(color: isScaled ? secondaryPurpleColor : purpleColor, radius: 20, y: 20)
                 )
+        }
+        .scaleEffect(isScaled ? 1.1 : 0.9)
+        .foregroundStyle(isScaled ? secondaryPurpleColor : purpleColor)
+        .animation(
+            Animation.easeInOut(duration: 2.0)
+                .repeatForever(autoreverses: true), value: isScaled
+        )
+        .onAppear {
+            isScaled = true
         }
     }
     
