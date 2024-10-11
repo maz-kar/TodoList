@@ -100,9 +100,9 @@ extension HomeView {
                         Image(systemName: entity.isTapped ? "checkmark.circle" : "circle")
                             .animation(.easeInOut)
                             .foregroundStyle(entity.isTapped ? Color.green : Color.red)
+                            .font(.title2)
                         Text(entity.name ?? "no name")
                     }
-                    .offset(x: -15)
                     .onTapGesture {
                         vm.toggleIsTapped(for: entity)
                     }

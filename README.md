@@ -27,5 +27,4 @@ We have:
 
 ## TODO:
  - Add launch screen. Still not working. Make a delay for the Launch Screen then it might be seen.
- - make the circles bigger (same size of the delete Edit).
 
