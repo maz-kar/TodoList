@@ -38,12 +38,7 @@ struct HomeView: View {
                     }
                     
                     ToolbarItem(placement: .topBarTrailing) {
-                        NavigationLink {
-                            AddItemView()
-                        } label: {
-                            Text("Add")
-                                .foregroundStyle(Color.theme.accent)
-                        }
+                        NavigationLink("Add", destination: AddItemView())
                     }
                 })
                 .navigationBarBackButtonHidden()
@@ -100,9 +95,11 @@ extension HomeView {
                         Image(systemName: entity.isTapped ? "checkmark.circle" : "circle")
                             .animation(.easeInOut)
                             .foregroundStyle(entity.isTapped ? Color.green : Color.red)
-                            .font(.title2)
+                        
                         Text(entity.name ?? "no name")
                     }
+                    .padding(.horizontal, -10)
+                    .font(.title2)
                     .onTapGesture {
                         vm.toggleIsTapped(for: entity)
                     }
@@ -110,7 +107,6 @@ extension HomeView {
             }
             .onDelete(perform: vm.deleteItems)
             .onMove(perform: vm.moveItems)
-            
         }
         .listStyle(.plain)
     }
