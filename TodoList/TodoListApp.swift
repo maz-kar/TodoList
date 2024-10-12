@@ -13,7 +13,9 @@ struct TodoListApp: App {
     
     var body: some Scene {
         WindowGroup {
-            HomeView()
+            NavigationStack {
+                HomeView()
+            }
         }
         .environmentObject(vm)
     }

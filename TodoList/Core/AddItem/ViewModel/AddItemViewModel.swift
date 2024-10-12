@@ -55,6 +55,10 @@ class AddItemViewModel: ObservableObject {
         saveItems()
     }
     
+    func moveItems(from index: IndexSet, to destination: Int) {
+        savedEntities.move(fromOffsets: index, toOffset: destination)
+    }
+    
     func toggleIsTapped(for entity: TodoItemEntity) {
         objectWillChange.send()
         entity.isTapped.toggle()

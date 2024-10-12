@@ -109,10 +109,7 @@ extension HomeView {
                 }
             }
             .onDelete(perform: vm.deleteItems)
-            
-            .onMove { indices, newOffset in
-                vm.savedEntities.move(fromOffsets: indices, toOffset: newOffset)
-            }
+            .onMove(perform: vm.moveItems)
             
         }
         .listStyle(.plain)
