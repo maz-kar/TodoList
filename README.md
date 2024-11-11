@@ -1,7 +1,7 @@
 # TodoList
 
 ## Description:
-This is a test app to create the CoinGeckoApp with SwiftUI and also writing as much as possible unit and maybe UI tests for it.
+This is a test app to create a TodoList with SwiftUI and also writing as much as possible unit and UI tests for it.
 
 ## Frameworks:
 - Swift
